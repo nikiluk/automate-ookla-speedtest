@@ -23,7 +23,7 @@ for($i = 0; $i -lt $numberoftests; $i++){
 
     try{
         Write-Host "---"
-        Write-Host "Running test #"$i
+        Write-Host "Running test #"$($i+1)
 
         #running speedtest
         $response = .\speedtest --format=json-pretty --unit=Mbps
@@ -38,7 +38,7 @@ for($i = 0; $i -lt $numberoftests; $i++){
             #adjusting JSON formatting
             $response+"]"| Out-File -FilePath $outputfile -Append -Encoding utf8
 
-            Write-Host "Test #" $i" completed"
+            Write-Host "Test #"$($i+1)"completed"
         }
         else {
             Write-Error "Error"
@@ -50,7 +50,7 @@ for($i = 0; $i -lt $numberoftests; $i++){
      catch{
         #catch error
      }
-    Write-Host "Total tests:" $i "(failed" $failed ")"
+    Write-Host "Total tests:" $($i+1) "(failed" $failed")"
     Write-Host "---"
     Write-Host ""
 
