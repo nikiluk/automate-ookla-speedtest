@@ -24,6 +24,52 @@ $interval = 1 #wait and restart after $interval seconds
 $numberoftests = $testduration*24*60*60/$interval #calculated based on $testduration and the $interval
 ```
 
+## Output
+Here's the sample output you'd receive for each test.
+```JSON
+{
+    "type": "result",
+    "timestamp": "2021-02-03T22:25:46Z",
+    "ping": {
+        "jitter": 0.20899999999999999,
+        "latency": 3.214
+    },
+    "download": {
+        "bandwidth": 10941393,
+        "bytes": 39562829,
+        "elapsed": 3608
+    },
+    "upload": {
+        "bandwidth": 11838684,
+        "bytes": 42652051,
+        "elapsed": 3605
+    },
+    "packetLoss": 0,
+    "isp": "XXX",
+    "interface": {
+        "internalIp": "X.X.X.X",
+        "name": "",
+        "macAddr": "X:X:X:X:X:X",
+        "isVpn": false,
+        "externalIp": "X.X.X.X"
+    },
+    "server": {
+        "id": "X",
+        "name": "X",
+        "location": "X",
+        "country": "X",
+        "host": "X",
+        "port": 8080,
+        "ip": "X.X.X.X"
+    },
+    "result": {
+        "id": "X",
+        "url": "https://www.speedtest.net/result/c/X"
+    }
+}
+
+```
+
 ## Prerequisites
 * **Security Permissions**: You should have the rigth to launch scrips on your computer. To do this, use the cmdlet below. The `Set-ExecutionPolicy` cmdlet's default scope is `LocalMachine`, which affects everyone who uses the computer. To change the execution policy for `LocalMachine`, start PowerShell with Run as Administrator. Then type:
     ```powershell
