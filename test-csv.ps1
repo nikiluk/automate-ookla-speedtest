@@ -2,7 +2,7 @@
 # open powershell in your terminal in this folder and type ".\test"
 
 #options
-$outputfile = ".\internetspeed.json" #JSON file where the test results are stored
+$outputfile = ".\internetspeed.csv" #JSON file where the test results are stored
 $testduration = 14 #in days
 $interval = 1 #wait and restart after $interval seconds
 $numberoftests = $testduration*24*60*60/$interval #calculated based on $testduration and the $interval
@@ -12,10 +12,13 @@ Write-Host "Running test every " $interval "seconds"
 Write-Host "Tests to run:" $numberoftests
 Write-Host "Writing test results to a file:"$outputfile
 
+
 Write-Host ""
 #$OutArray = @()
 if (-not(Test-Path -Path $outputfile -PathType Leaf)) {
-   "[" | Out-File -FilePath $outputfile -Append -Encoding utf8
+    #write headers on first launch
+    $content = Get-Content ".\headers.csv"
+    $content | Set-Content $outputfile
 }
 
 $failed = 0
@@ -27,17 +30,13 @@ for($i = 0; $i -lt $numberoftests; $i++){
         Write-Host "Running test #"$($i+1)
 
         #running speedtest
-        $response = .\speedtest --format=json-pretty --unit=Mbps
-        $responseObj = $response | ConvertFrom-Json
+        $response = .\speedtest --format=csv --unit=Mbps
+        #$responseObj = $response | ConvertFrom-Json
 
-        if ("result" -eq $responseObj.type) {
-            #appeding result to the output file
-            $content = Get-Content $outputfile
-            $content[-1] = $content[-1].Substring(0,$content[-1].Length-1)+","
-            $content | Set-Content $outputfile
+        if ($response -Match "result") {
 
             #adjusting JSON formatting
-            $response+"]"| Out-File -FilePath $outputfile -Append -Encoding utf8
+            $response | Out-File -FilePath $outputfile -Append -Encoding utf8
 
             Write-Host "Test #"$($i+1)"completed"
         }

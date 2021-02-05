@@ -1,0 +1,1 @@
+"server.name","server.id","ping.latency","ping.jitter","packetLoss","download.bytes","download.bandwidth","upload.bytes","upload.bandwidth","result.url"
