@@ -5,21 +5,21 @@ With `test.ps1` PowerShell script you can easily use Ookla Speedtest® CLI to me
 * set up test intervals and duration
 * analyze raw test data 
 
-## Visualize test data
+## Visualized test data
 
 Boxplot
-![Visualize internet speed tests with boxplot](src/images/boxplot.png)
+![Visualize internet speed tests with boxplot](./src/images/boxplot.png)
 
 Density distribution
 ![Visualize internet speed tests with density distribution](./src/images/distribution.png) 
 
 Speed and ping based on the hour of the day
-![Visualize internet speed based on the hour of the day](.\src\images\hourly-average.png) 
+![Visualize internet speed based on the hour of the day](./src/images/hourly-average.png) 
 ![Visualize internet ping based on the hour of the day](./src/images/hourly-ping.png) 
 
 
 
-## Measuring the internet speed
+## How to het started and automatically measure the internet speed
 1. Download this repository to your PC.
 2. Download Speedtest CLI from [here](https://www.speedtest.net/apps/cli) and unpack `speedtest.exe` file in the repository folder.
 3. Open PowerShell in your terminal in this folder and type `.\test`
