@@ -86,7 +86,7 @@ Here's the sample output you'd receive for each test in JSON.
 ```
 
 Here's the sample output you'd receive for each test in CSV.
-![CSV](.\src/images/2021-02-05%2009.10.43%20internetspeed.csv%20-%20Excel.png)
+![CSV](./src/images/2021-02-05%2009.10.43%20internetspeed.csv%20-%20Excel.png)
 
 ## Prerequisites
 * **Security Permissions**: You should have the rigth to launch scrips on your computer. To do this, use the cmdlet below. The `Set-ExecutionPolicy` cmdlet's default scope is `LocalMachine`, which affects everyone who uses the computer. To change the execution policy for `LocalMachine`, start PowerShell with Run as Administrator. Then type:
