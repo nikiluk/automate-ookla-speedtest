@@ -17,7 +17,7 @@ Write-Host ""
 #$OutArray = @()
 if (-not(Test-Path -Path $outputfile -PathType Leaf)) {
     #write headers on first launch
-    $content = Get-Content ".\headers.csv"
+    $content = Get-Content ".\src\templates\headers.csv.tpl"
     $content | Set-Content $outputfile
 }
 
