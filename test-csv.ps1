@@ -2,7 +2,7 @@
 # open powershell in your terminal in this folder and type ".\test"
 
 #options
-$outputfile = ".\internetspeed.csv" #JSON file where the test results are stored
+$outputfile = ".\internetspeed.csv" #CSV file where the test results are stored
 $testduration = 14 #in days
 $interval = 1 #wait and restart after $interval seconds
 $numberoftests = $testduration*24*60*60/$interval #calculated based on $testduration and the $interval
