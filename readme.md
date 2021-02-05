@@ -99,6 +99,8 @@ PowerShell 5.1 and 6 save in UTF8 with BOM Encoding, so you'd need to reconvert 
     ```powershell
     iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
     ```
+* **Python 3**
+If you don't have python, you can set it up together with several other modules by installing [Anaconda3](https://www.anaconda.com/products/individual)
 
 ## Analysis
 1. Verify `internetspeed.json` has UTF8 encoding (without BOM);
