@@ -19,7 +19,7 @@ Speed and ping based on the hour of the day
 
 
 
-## How to het started and automatically measure the internet speed
+## How to get started and automatically measure the internet speed
 1. Download this repository to your PC.
 2. Download Speedtest CLI from [here](https://www.speedtest.net/apps/cli) and unpack `speedtest.exe` file in the repository folder.
 3. Open PowerShell in your terminal in this folder and type `.\test`
