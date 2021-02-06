@@ -36,6 +36,9 @@ for($i = 0; $i -lt $numberoftests; $i++){
             $content[-1] = $content[-1].Substring(0,$content[-1].Length-1)+","
             $content | Set-Content $outputfile
 
+            Write-Host "Download:"$($responseObj.download.bandwidth*8/1000000)"Mbps"
+            Write-Host "Upload:"$($responseObj.upload.bandwidth*8/1000000)"Mbps"
+
             #adjusting JSON formatting
             $response+"]"| Out-File -FilePath $outputfile -Append -Encoding utf8
 
