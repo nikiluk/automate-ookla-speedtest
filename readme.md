@@ -8,8 +8,9 @@ With `test.ps1` PowerShell script you can easily use Ookla Speedtest® CLI to me
 ## How to get started and automatically measure the internet speed
 1. Download this repository to your PC.
 2. Download Speedtest CLI from [here](https://www.speedtest.net/apps/cli) and unpack `speedtest.exe` file in the repository folder.
-3. Open PowerShell in your terminal in this folder and type `.\test`
-4. Test results will be saved in `internetspeed.json` as specified in `test.ps1`.
+3. Run `speedtest.exe` manually to accept the license (required only once). 
+4. Open PowerShell in your terminal in this folder and type `.\test`
+5. Test results will be saved in `internetspeed.json` as specified in `test.ps1`.
 
 Additionally you can output to CSV but with less options, by running  `.\test-csv`
 
@@ -103,3 +104,20 @@ If you don't have python, you can set it up together with several other modules 
 ## Analysis
 1. Verify `internetspeed.json` has UTF8 encoding (without BOM);
 2. Open and run `main.ipynb` in Python 3/Jupyter environment to display your stats.
+
+## Licenses
+
+### License for the code and documentation for this repo
+Feel free to modify this code as you wish.
+
+https://opensource.org/licenses/MIT
+
+
+### Terms of Use and Privacy Policy Notices for speedtest.exe as of 2021-02-06
+You may only use this Speedtest software and information generated from it for personal, non-commercial use,
+through a command line interface on a personal computer.  Your use of this software is subject to the End User
+License Agreement, Terms of Use and Privacy Policy at these URLs:
+
+* [https://www.speedtest.net/about/eula](https://www.speedtest.net/about/eula)
+* [https://www.speedtest.net/about/terms](https://www.speedtest.net/about/terms)
+* [https://www.speedtest.net/about/privacy](https://www.speedtest.net/about/privacy)

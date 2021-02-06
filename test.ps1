@@ -58,6 +58,3 @@ for($i = 0; $i -lt $numberoftests; $i++){
     Start-Sleep -Seconds $interval
 
 }
-
-
-
