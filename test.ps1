@@ -20,33 +20,33 @@ if (-not(Test-Path -Path $outputfile -PathType Leaf)) {
 
 $failed = 0
 for($i = 0; $i -lt $numberoftests; $i++){
-	Write-Host "---"
-	Write-Host "Running speed test #"$($i+1)
+  Write-Host "---"
+  Write-Host "Running speed test #"$($i+1)
 
-	#running speedtest
-	$response = .\speedtest --format=json-pretty --unit=Mbps
-	$responseObj = $response | ConvertFrom-Json
+  #running speedtest
+  $response = .\speedtest --format=json-pretty --unit=Mbps
+  $responseObj = $response | ConvertFrom-Json
 
-	if ("result" -eq $responseObj.type) {
-		#appeding result to the output file
-		$content = Get-Content $outputfile -Raw
-		
-		$separator = ""
-		if($content.Length -gt 4) {
-			$separator = ","
-		}
-		
-		$content = $content.Substring(0,$content.Length-3)+$separator+"`r`n"+$response+"]"
-		$content | Set-Content $outputfile
-		
+  if ("result" -eq $responseObj.type) {
+    #appeding result to the output file
+    $content = Get-Content $outputfile -Raw
+    
+    $separator = ""
+    if($content.Length -gt 4) {
+      $separator = ","
+    }
+    
+    $content = $content.Substring(0,$content.Length-3)+$separator+"`r`n"+$response+"]"
+    $content | Set-Content $outputfile
+    
     Write-Host "Download:"$($responseObj.download.bandwidth*8/1000000)"Mbps"
     Write-Host "Upload:"$($responseObj.upload.bandwidth*8/1000000)"Mbps"
-		Write-Host "Test #"$($i+1)"completed"
-	}
-	else {
-		Write-Error "Error"
-		$failed+=1
-	}
+    Write-Host "Test #"$($i+1)"completed"
+  }
+  else {
+    Write-Error "Error"
+    $failed+=1
+  }
 
   Write-Host "Total tests:" $($i+1) "(failed" $failed")"
   Write-Host "---"
