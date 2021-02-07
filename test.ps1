@@ -39,6 +39,8 @@ for($i = 0; $i -lt $numberoftests; $i++){
 		$content = $content.Substring(0,$content.Length-3)+$separator+"`r`n"+$response+"]"
 		$content | Set-Content $outputfile
 		
+    Write-Host "Download:"$($responseObj.download.bandwidth*8/1000000)"Mbps"
+    Write-Host "Upload:"$($responseObj.upload.bandwidth*8/1000000)"Mbps"
 		Write-Host "Test #"$($i+1)"completed"
 	}
 	else {
@@ -46,13 +48,10 @@ for($i = 0; $i -lt $numberoftests; $i++){
 		$failed+=1
 	}
 
-    Write-Host "Total tests:" $($i+1) "(failed" $failed")"
-    Write-Host "---"
-    Write-Host ""
+  Write-Host "Total tests:" $($i+1) "(failed" $failed")"
+  Write-Host "---"
+  Write-Host ""
 
-    Start-Sleep -Seconds $interval
+  Start-Sleep -Seconds $interval
 
 }
-
-
-
