@@ -10,8 +10,9 @@ from csv import writer
 # Google Drive (so many computers can feed into the same database!)
 output_csv         = "Y:\speedtest_output.csv"
 interval_seconds   = 2
-hours_to_run_for   = 24
-seconds_to_run_for = 120  # hours_to_run_for * 60 * 60
+hours_to_run_for   = 0.5
+seconds_to_run_for = hours_to_run_for * 60 * 60
+print("Running for", seconds_to_run_for, "seconds...")
 
 
 def append_to_csv(csv_to_append, list):
@@ -21,8 +22,12 @@ def append_to_csv(csv_to_append, list):
         f_object.close()
 
 
-if __name__ == '__main__':
+def get_time_str(num_seconds_elapsed):
+    return time.strftime("%Hh%Mm%Ss", time.gmtime(num_seconds_elapsed))
 
+
+if __name__ == '__main__':
+    num_tests = 0
     start_time = int(time.time())
     end_time   = start_time + seconds_to_run_for
 
@@ -30,13 +35,16 @@ if __name__ == '__main__':
         date_and_time = datetime.datetime.utcnow()
         print("Start speed test...")
         output = subprocess.check_output("speedtest --format=csv")
-        print("Finished speed test!")
-        output_with_time_prepended = str(date_and_time) + ", " + str(output.decode("utf-8")).replace('"', "")
+        output_with_time_prepended = str(date_and_time) + "," + str(output.decode("utf-8")).replace('"', "")
         output_list = output_with_time_prepended.split(",")
+        print("Finished speed test with download speed:", str(float(output_list[7]) / 100000.0), "Mbps")
         append_to_csv(output_csv, output_list)
+        num_tests += 1
+        print("Number of tests completed:", num_tests, "in", get_time_str(time.time() - start_time))
         time.sleep(interval_seconds)
 
     print("Finished testing!")
+
 
 
 
