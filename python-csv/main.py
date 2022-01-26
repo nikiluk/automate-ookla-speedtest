@@ -37,6 +37,7 @@ if __name__ == '__main__':
         output = subprocess.check_output("speedtest --format=csv")
         output_with_time_prepended = str(date_and_time) + "," + str(output.decode("utf-8")).replace('"', "")
         output_list = output_with_time_prepended.split(",")
+        # TODO THERE SOMETHING INCORRECT ABOUT HOW THE DOWNLOAD SPEED IS INTERPRETED HERE...
         print("Finished speed test with download speed:", str(float(output_list[6]) / 1000000.0), "Mbps")
         append_to_csv(output_csv, output_list)
         num_tests += 1
