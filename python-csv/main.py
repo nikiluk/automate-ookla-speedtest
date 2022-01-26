@@ -1,4 +1,6 @@
 
+# By Jamie Pond -- Github: jamierpond
+
 import subprocess
 import datetime
 import time
