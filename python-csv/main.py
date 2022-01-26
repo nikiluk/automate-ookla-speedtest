@@ -1,35 +1,41 @@
 
 import os
 import subprocess
-import csv
 import datetime
-
+import time
 from csv import writer
 
-os.chdir(os.getcwd())
+output_csv         = "speedtest_output.csv"
+interval_seconds   = 2
+hours_to_run_for   = 24
+seconds_to_run_for = 120  # hours_to_run_for * 60 * 60
 
-# Press the green button in the gutter to run the script.
+
+def append_to_csv(csv_to_append, list):
+    with open(csv_to_append, 'a', newline='') as f_object:
+        writer_object = writer(f_object)
+        writer_object.writerow(list)
+        f_object.close()
+
+
 if __name__ == '__main__':
 
-    now = datetime.datetime.utcnow()
+    start_time = int(time.time())
+    end_time   = start_time + seconds_to_run_for
 
-    print("Start speed test...")
-    output = subprocess.check_output("speedtest --format=csv")
-    print("Finished speed test!")
+    while int(time.time()) < end_time:
+        date_and_time = datetime.datetime.utcnow()
+        print("Start speed test...")
+        output = subprocess.check_output("speedtest --format=csv")
+        print("Finished speed test!")
+        output_with_time_prepended = str(date_and_time) + ", " + str(output.decode("utf-8")).replace('"', "")
+        output_list = output_with_time_prepended.split(",")
+        append_to_csv(output_csv, output_list)
+        time.sleep(interval_seconds)
 
-    output_with_time_prepended = str(now) + ", " + str(output.decode("utf-8")).replace('"', "")
-    print(output_with_time_prepended)
+    print("Finished testing!")
 
-    output_list = output_with_time_prepended.split(",")
 
-    with open('CSVFILE.csv', 'a', newline='') as f_object:
-        # Pass the CSV  file object to the writer() function
-        writer_object = writer(f_object)
-        # Result - a writer object
-        # Pass the data in the list as an argument into the writerow() function
-        writer_object.writerow(output_list)
-        # Close the file object
-        f_object.close()
 
 
 
