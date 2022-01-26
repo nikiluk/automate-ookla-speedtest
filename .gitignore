@@ -2,3 +2,10 @@
 *.csv
 *.exe
 speedtest.md
+python-csv/.idea/vcs.xml
+python-csv/.idea/python-csv.iml
+python-csv/.idea/modules.xml
+python-csv/.idea/misc.xml
+python-csv/.idea/inspectionProfiles/Project_Default.xml
+python-csv/.idea/inspectionProfiles/profiles_settings.xml
+__pycache__/functions.cpython-38.pyc
