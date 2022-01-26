@@ -5,7 +5,10 @@ import datetime
 import time
 from csv import writer
 
-output_csv         = "speedtest_output.csv"
+# Edit the values you want before you run the script here.
+# I've had success with even appending to files on my remote
+# Google Drive (so many computers can feed into the same database!)
+output_csv         = "Y:\speedtest_output.csv"
 interval_seconds   = 2
 hours_to_run_for   = 24
 seconds_to_run_for = 120  # hours_to_run_for * 60 * 60
